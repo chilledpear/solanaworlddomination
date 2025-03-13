@@ -815,7 +815,7 @@ const Player = {
         this.model.position.z += this.velocity.z * normalizedDelta;
         
         // Simple collision detection with bounds
-        const bounds = 50; // World size
+        const bounds = 1000; // World size (2000x2000 map, so 1000 in each direction from center)
         this.model.position.x = Utils.clamp(this.model.position.x, -bounds, bounds);
         this.model.position.z = Utils.clamp(this.model.position.z, -bounds, bounds);
         

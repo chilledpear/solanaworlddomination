@@ -163,12 +163,12 @@ const World = {
         this.createFuturisticCity();
 
         // 6. Central Ascension monument
-        this.createMonument();
+        this.createMonument(); // Without the large base
 
         // 7. Decorative & interactive elements
         this.createDecorations();
 
-        // 8. Create transparent boundaries
+        // 8. Create expanded transparent boundaries
         this.createBoundaries();
 
         // 9. Additional interactive objects (minigames, quests, etc.)
@@ -225,7 +225,6 @@ const World = {
      */
     createRoads: function () {
         // Example: create cross-like roads or radial roads
-        // In a real scenario, you'd place detailed road geometry or use textures
         const roadMaterial = new THREE.MeshBasicMaterial({ color: 0x333333 });
         
         function createRoad(width, length, x, z, rotation) {
@@ -243,17 +242,12 @@ const World = {
             const angle = (Math.PI * 2 * i) / 6;
             createRoad(20, 600, 0, 0, angle);
         }
-
-        // Create a circular "ring road" around the center
-        // (For a truly curved road, you'd need a custom geometry or lines)
-        // We'll skip a 3D ring for brevity, but you can add one similarly.
     },
 
     /**
      * Create a central reflective lake or water platform to add serenity
      */
     createCentralLake: function () {
-        // Circle geometry for water
         const waterGeo = new THREE.CircleGeometry(30, 64);
         const waterMat = new THREE.MeshPhysicalMaterial({
             color: 0x88ccff,
@@ -336,7 +330,6 @@ const World = {
         const radiusBottom = Utils.randomFloat(3, 6);
 
         const geometry = new THREE.CylinderGeometry(radiusTop, radiusBottom, height, 24);
-
         const material = new THREE.MeshPhongMaterial({
             color: this.getRandomFuturisticColor(),
             emissive: 0x88ccff,
@@ -365,7 +358,6 @@ const World = {
      * Create a large arc building, like a futuristic gateway
      */
     createArcBuilding: function (x, z, scale) {
-        // Use a torus geometry as a base for the arch, scaled vertically
         const radius = Utils.randomFloat(5, 12) * scale;
         const tube = Utils.randomFloat(0.6, 1);
         const arcGeo = new THREE.TorusGeometry(radius, tube, 16, 50, Math.PI);
@@ -380,8 +372,6 @@ const World = {
         });
 
         const arc = new THREE.Mesh(arcGeo, arcMat);
-
-        // Rotate upright
         arc.rotation.x = Math.PI / 2;
         arc.position.set(x, radius / 2, z);
         arc.castShadow = true;
@@ -443,25 +433,13 @@ const World = {
     },
 
     /**
-     * Create the central Ascension Monument with a more complex look
+     * Create the central Ascension Monument WITHOUT the large base
      */
     createMonument: function () {
-        // Monument base
-        const baseGeo = new THREE.CylinderGeometry(10, 12, 2.5, 32);
-        const baseMat = new THREE.MeshPhysicalMaterial({
-            color: 0xffffff,
-            emissive: 0x88eeff,
-            emissiveIntensity: 0.1,
-            metalness: 0.3,
-            roughness: 0.2
-        });
-        const base = new THREE.Mesh(baseGeo, baseMat);
-        base.position.set(0, 1.25, 0);
-        base.receiveShadow = true;
-        this.scene.add(base);
+        // Remove the big white base
+        // We'll keep only the pillar & crystal
 
-        // Pillar with swirling geometry (e.g. twist or helix).
-        // Here, we’ll just do a tall cylinder for simplicity
+        // Pillar (replaces the "pole")
         const pillarGeo = new THREE.CylinderGeometry(1.5, 1.5, 14, 64);
         const pillarMat = new THREE.MeshPhongMaterial({
             color: 0xffffff,
@@ -472,7 +450,7 @@ const World = {
             opacity: 0.95
         });
         const pillar = new THREE.Mesh(pillarGeo, pillarMat);
-        pillar.position.set(0, 8, 0);
+        pillar.position.set(0, 7, 0); // Lowered since there's no base
         pillar.castShadow = true;
         this.scene.add(pillar);
 
@@ -487,11 +465,11 @@ const World = {
             opacity: 0.85
         });
         const crystal = new THREE.Mesh(crystalGeo, crystalMat);
-        crystal.position.set(0, 15, 0);
+        crystal.position.set(0, 14, 0); // Adjusted to float above the pillar
         crystal.castShadow = true;
 
         crystal.userData = {
-            originalY: 15,
+            originalY: 14,
             rotationSpeed: 0.01
         };
 
@@ -504,7 +482,6 @@ const World = {
 
         // Combine references
         this.monument = {
-            base,
             pillar,
             crystal,
             light: crystalLight
@@ -515,14 +492,7 @@ const World = {
         crystal.name = "Ascension Monument";
         this.interactiveObjects.push(crystal);
 
-        // Colliders
-        base.geometry.computeBoundingBox();
-        const baseBB = base.geometry.boundingBox.clone();
-        baseBB.translate(base.position);
-        base.userData.boundingBox = baseBB;
-        base.userData.isCollider = true;
-        this.colliders.push(base);
-
+        // Colliders for the pillar
         pillar.geometry.computeBoundingBox();
         const pillarBB = pillar.geometry.boundingBox.clone();
         pillarBB.translate(pillar.position);
@@ -538,7 +508,7 @@ const World = {
      * - Flying vehicles (optional)
      */
     createDecorations: function () {
-        // 1. Floating platforms around the monument
+        // 1. Floating platforms around the (now smaller) monument
         for (let i = 0; i < 5; i++) {
             const angle = (Math.PI * 2 * i) / 5;
             const radius = 40;
@@ -629,8 +599,6 @@ const World = {
             transparent: true,
             opacity: 0.8,
             side: THREE.DoubleSide
-            // Optionally add a "futuristic ad" texture
-            // map: Assets.textures.futuristicAd
         });
 
         const billboard = new THREE.Mesh(billboardGeo, billboardMat);
@@ -723,15 +691,13 @@ const World = {
 
         this.scene.add(fragment);
         this.interactiveObjects.push(fragment);
-
-        // No collider for small collectible items (optional)
     },
 
     /**
-     * Create transparent or gently glowing boundaries around the playable area
+     * Create expanded transparent boundaries around the playable area
      */
     createBoundaries: function () {
-        const boundarySize = 800;
+        const boundarySize = 2000; // Expanded boundary
         const boundaryHeight = 20;
         const boundaryThickness = 2;
 
@@ -907,7 +873,7 @@ const World = {
      * Update world objects, animations, NPCs, and post-processing each frame
      */
     update: function (deltaTime) {
-        // Update monument crystal float & rotation
+        // Update monument crystal float & rotation (pillar + orb)
         if (this.monument && this.monument.crystal) {
             const crystal = this.monument.crystal;
             crystal.position.y = crystal.userData.originalY +

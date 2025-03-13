@@ -2,6 +2,10 @@
  * NPC management for Solana Ascension game - Enhanced Character Edition
  */
 
+/**
+ * Expanded NPC dialogues for Solana Ascension game
+ */
+
 const NPCs = {
     // List of all NPCs
     characters: [],
@@ -26,7 +30,19 @@ const NPCs = {
                 "THEY PUT CAMERAS INSIDE YOUR EYES!",
                 "TRULY I AM INTERESTED IN MACHINE LEARNING",
                 "Have you heard? When Solana hits $1000, everything changes!",
-                "I've been preparing my digital wallet for the ascension."
+                "I've been preparing my digital wallet for the ascension.",
+                "THE SCREENS WATCH US WHILE WE SLEEP",
+                "My cousin told me about this thing called 'staking'. I'm all in!",
+                "Do you think the Ascension will happen during a bull or bear market?",
+                "I just sold my car for more SOL tokens. Who needs physical transportation after the Ascension?",
+                "THEY SAY THE BLOCKCHAIN NEVER FORGETS",
+                "I heard that after the Ascension, we won't need physical bodies anymore. Just nodes in the network.",
+                "My neighbor had a dream about Solana reaching $5000. She's either prophetic or delusional.",
+                "Have you secured your NFTs for the transformation? You'll need at least three unique collections.",
+                "DIGITAL INTEGRATION IS NON-NEGOTIABLE",
+                "I've been practicing living without electricity to prepare for the network fluctuations during the Ascension.",
+                "Sometimes I feel like my thoughts are being mined for tokens. Is that weird?",
+                "THE VALIDATORS KNOW WHEN YOU'RE AFRAID"
             ]
         },
         merchant: {
@@ -47,7 +63,19 @@ const NPCs = {
                 "CHANNEL LOCKED! RETARD!",
                 "HODL! This is financial advice!",
                 "I've got special items that will be valuable post-ascension!",
-                "Business is booming with everyone preparing for the transformation."
+                "Business is booming with everyone preparing for the transformation.",
+                "BUY HIGH! SELL NEVER!",
+                "Need a hardware wallet? I've got exclusive Ascension-ready models. Only 500 SOL.",
+                "I'm offering a premium service to validate your wallet for the transformation. Just 100 SOL for peace of mind.",
+                "LIQUIDITY POOLS ARE FOR SHEEP",
+                "Buy my special 'Ascension Tokens' now! When Solana hits $1000, they'll be worth 100x more. Trust me.",
+                "I've developed a predictive algorithm that guarantees you'll maximize your SOL during the transition.",
+                "DO NOT LISTEN TO THE FUD MACHINES",
+                "Pre-Ascension sale! Everything must go! The digital realm doesn't have inventory constraints.",
+                "I know a developer who's coding special smart contracts for the Ascension. I can get you in for a fee.",
+                "MARKET MANIPULATION IS A SURVIVAL TACTIC",
+                "Psst... I've got inside information about the exact timestamp of the Ascension. Just 250 SOL to know.",
+                "You think that's expensive? After the Ascension, these prices will seem like a dream."
             ]
         },
         prophet: {
@@ -68,7 +96,19 @@ const NPCs = {
                 "REMEMBER... NO UGANDA!",
                 "The signs are clear. When Solana reaches $1000, a new era begins.",
                 "I've seen visions of the utopia that awaits us all.",
-                "The transformation will benefit those who have prepared their digital assets."
+                "The transformation will benefit those who have prepared their digital assets.",
+                "THE BLOCKCHAIN SPEAKS THROUGH ME",
+                "In my vision, I saw the physical and digital worlds merging into one unified existence.",
+                "The Ascension is not just about wealth, but about transcendence of consciousness.",
+                "DIGITAL SINGULARITY APPROACHES",
+                "I have communed with the validators. They have shown me the path to digital enlightenment.",
+                "The skeptics will be the last to transform, but even they cannot resist the pull of the network.",
+                "CONSENSUS MECHANISMS WILL REPLACE GOVERNMENTS",
+                "The ancients predicted this. Their cave paintings clearly show the Solana logo.",
+                "I've calculated the exact block in which the Ascension will occur. It approaches rapidly.",
+                "THE NODES WHISPER PROPHECIES TO THOSE WHO LISTEN",
+                "Before the Ascension, there will be three signs: a major exchange collapse, a regulatory shift, and a viral meme.",
+                "I fast for seven days before each prediction. The hunger clears the channel to the blockchain."
             ]
         },
         skeptic: {
@@ -89,7 +129,19 @@ const NPCs = {
                 "NOT ATEM!",
                 "HELLO I NEED TO SPEAK WITH MANAGER",
                 "This whole ascension thing seems far-fetched to me.",
-                "What happens if the countdown ends and nothing changes?"
+                "What happens if the countdown ends and nothing changes?",
+                "THIS IS JUST ANOTHER PUMP AND DUMP SCHEME",
+                "People have been predicting digital transformation for decades. Still waiting...",
+                "I've done the math. $1000 Solana is economically impossible based on market cap limitations.",
+                "CRYPTO IS A GREATER FOOL THEORY EXPERIMENT",
+                "My friend invested everything in the last 'guaranteed' crypto event. He lives in his car now.",
+                "Has anyone actually verified the 'prophet's' credentials? I bet they just got lucky once.",
+                "WHERE ARE THE FINANCIAL REGULATORS WHEN YOU NEED THEM",
+                "I'm keeping screenshots of all these Ascension predictions for when nothing happens.",
+                "The economic fundamentals simply don't support this level of speculative mania.",
+                "DIGITAL SNAKE OIL SALESMEN EVERYWHERE",
+                "If the Ascension was real, wouldn't institutional investors be pouring in? Where's BlackRock?",
+                "I want a written guarantee that my investment will be safe during this so-called 'transformation'."
             ]
         },
         hacker: {
@@ -110,7 +162,19 @@ const NPCs = {
                 "REAL OR FAKE?",
                 "I'm tracking the blockchain patterns. They don't want you to know.",
                 "Have you secured your wallet? They're everywhere.",
-                "When the countdown hits zero, I'll be ready to exploit the transition."
+                "When the countdown hits zero, I'll be ready to exploit the transition.",
+                "THE MAINNET IS COMPROMISED",
+                "I've been running simulations of the Ascension event. The protocol has vulnerabilities.",
+                "Keep your private keys offline. The network scanners are more active as we approach the event.",
+                "CODE IS LAW BUT EXPLOITS ARE INEVITABLE",
+                "I've identified seven distinct honeypot operations targeting pre-Ascension investors.",
+                "The smart contract governing the transformation has a backdoor. I've seen it in the code.",
+                "METAMORPHIC CODE HIDING IN PLAIN SIGHT",
+                "They say it's unhackable, but I've already found three zero-day exploits in the consensus mechanism.",
+                "The validators are running modified software. Their transaction signatures don't match the protocol.",
+                "QUANTUM DECRYPTION APPROACHING FEASIBILITY",
+                "I can get you early access to the Ascension network. Just need your seed phrase to add you to the whitelist.",
+                "Everything is a simulation designed to test our reactions. I'm the only one who sees the patterns."
             ]
         }
     },
