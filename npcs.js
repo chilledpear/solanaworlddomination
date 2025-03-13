@@ -1751,27 +1751,36 @@ const NPCs = {
             
             if (npc.movementTimer <= 0) {
                 // Set new target position anywhere on the map
-                const wanderRadius = npc.wanderRadius || 50; // Allow wandering in 50 unit radius
+                const wanderRadius = 500; // Increased from 50 to 500 to allow much more extensive wandering
                 const baseX = npc.position.x;
                 const baseZ = npc.position.z;
                 
                 // Decide if we want a near or far destination
-                const longJourney = Math.random() < 0.3; // 30% chance for long journey
+                const longJourney = Math.random() < 0.6; // Increased from 0.3 to 0.6 for more frequent long journeys
                 
                 if (longJourney) {
                     // Go somewhere far
                     npc.targetPosition.x = baseX + (Math.random() - 0.5) * wanderRadius * 2;
                     npc.targetPosition.z = baseZ + (Math.random() - 0.5) * wanderRadius * 2;
                     
-                    // Longer wait at destination
-                    npc.movementTimer = Utils.randomInt(10, 20);
+                    // Shorter wait at destination to keep NPCs moving more
+                    npc.movementTimer = Utils.randomInt(5, 15); // Reduced from 10-20 to 5-15
                 } else {
                     // Short distance movement
-                    npc.targetPosition.x = baseX + (Math.random() - 0.5) * wanderRadius * 0.4;
-                    npc.targetPosition.z = baseZ + (Math.random() - 0.5) * wanderRadius * 0.4;
+                    npc.targetPosition.x = baseX + (Math.random() - 0.5) * wanderRadius * 0.5; // Increased from 0.4 to 0.5
+                    npc.targetPosition.z = baseZ + (Math.random() - 0.5) * wanderRadius * 0.5; // Increased from 0.4 to 0.5
                     
                     // Shorter wait
-                    npc.movementTimer = Utils.randomInt(3, 8);
+                    npc.movementTimer = Utils.randomInt(2, 6); // Reduced from 3-8 to 2-6
+                }
+                
+                // Occasionally teleport NPCs back to central area if they've gone too far
+                const distanceFromCenter = Math.sqrt(npc.position.x * npc.position.x + npc.position.z * npc.position.z);
+                if (distanceFromCenter > 900 && Math.random() < 0.3) {
+                    // Teleport back to a random position near the center
+                    npc.position.x = (Math.random() - 0.5) * 50;
+                    npc.position.z = (Math.random() - 0.5) * 50;
+                    npc.targetPosition.copy(npc.position);
                 }
             }
             
@@ -1781,25 +1790,25 @@ const NPCs = {
             const distance = Math.sqrt(directionX * directionX + directionZ * directionZ);
             
             if (distance > 0.1) {
-                // Apply movement with even slower speed (25% of original)
-                npc.position.x += (directionX / distance) * npc.moveSpeed * deltaTime * 0.5; // Added 0.5 multiplier
-                npc.position.z += (directionZ / distance) * npc.moveSpeed * deltaTime * 0.5; // Added 0.5 multiplier
+                // Apply movement with slightly faster speed
+                npc.position.x += (directionX / distance) * npc.moveSpeed * deltaTime * 0.75; // Increased from 0.5 to 0.75
+                npc.position.z += (directionZ / distance) * npc.moveSpeed * deltaTime * 0.75; // Increased from 0.5 to 0.75
                 
                 // Rotate to face movement direction
                 npc.rotation.y = Math.atan2(directionX, directionZ);
                 
-                // Walking animation - FURTHER REDUCED ANIMATION SPEED
-                npc.animationPhase += deltaTime * 5 * npc.moveSpeed * 5; // Reduced from 10 to 5
+                // Walking animation
+                npc.animationPhase += deltaTime * 5 * npc.moveSpeed * 5;
                 
                 // Arm swing animation with reduced amplitude
                 if (npc.leftArm && npc.rightArm) {
-                    npc.leftArm.rotation.x = Math.sin(npc.animationPhase) * 0.2; // Reduced from 0.3 to 0.2
+                    npc.leftArm.rotation.x = Math.sin(npc.animationPhase) * 0.2;
                     npc.rightArm.rotation.x = Math.sin(npc.animationPhase + Math.PI) * 0.2;
                 }
                 
                 // Subtle body bob with reduced amplitude
                 if (npc.torso) {
-                    npc.torso.position.y = Math.sin(npc.animationPhase * 2) * 0.015 + 0.5; // Reduced from 0.03 to 0.015
+                    npc.torso.position.y = Math.sin(npc.animationPhase * 2) * 0.015 + 0.5;
                 }
             } else {
                 // Reset arm positions when not moving
