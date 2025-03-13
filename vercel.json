@@ -1,0 +1,18 @@
+{
+    "version": 2,
+    "name": "solana-ascension",
+    "builds": [
+      { "src": "*.html", "use": "@vercel/static" },
+      { "src": "*.js", "use": "@vercel/static" },
+      { "src": "*.css", "use": "@vercel/static" },
+      { "src": "*.png", "use": "@vercel/static" },
+      { "src": "*.jpg", "use": "@vercel/static" },
+      { "src": "*.svg", "use": "@vercel/static" },
+      { "src": "*.json", "use": "@vercel/static" },
+      { "src": "*.md", "use": "@vercel/static" }
+    ],
+    "routes": [
+      { "handle": "filesystem" },
+      { "src": "/(.*)", "dest": "/index.html" }
+    ]
+  }

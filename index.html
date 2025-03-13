@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solana Ascension: Road to Utopia</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #000;
+            font-family: 'Arial', sans-serif;
+        }
+        #game-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        #loading-screen {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #120338;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            color: #fff;
+            transition: opacity 1s ease-in-out;
+        }
+        #loading-bar-container {
+            width: 50%;
+            height: 30px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+        #loading-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #9945FF, #14F195);
+            border-radius: 15px;
+            transition: width 0.3s ease-out;
+        }
+        #loading-text {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #9945FF;
+        }
+        #countdown-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(18, 3, 56, 0.7);
+            border: 2px solid #9945FF;
+            border-radius: 10px;
+            padding: 10px 20px;
+            color: #fff;
+            font-size: 18px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 0 20px rgba(153, 69, 255, 0.5);
+        }
+        #countdown-label {
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #14F195;
+        }
+        #countdown-timer {
+            font-size: 24px;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+        }
+        #quest-notification {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(18, 3, 56, 0.9);
+            border: 2px solid #14F195;
+            border-radius: 10px;
+            padding: 15px 25px;
+            color: #fff;
+            z-index: 100;
+            display: none;
+            transition: opacity 0.5s ease-in-out;
+            max-width: 80%;
+            text-align: center;
+        }
+        #quest-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #14F195;
+        }
+        #quest-description {
+            font-size: 14px;
+        }
+        #controls-info {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background-color: rgba(18, 3, 56, 0.7);
+            border: 1px solid #9945FF;
+            border-radius: 5px;
+            padding: 10px;
+            color: #fff;
+            font-size: 14px;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading-screen">
+        <h1>SOLANA ASCENSION</h1>
+        <h2>Road to Utopia</h2>
+        <div id="loading-bar-container">
+            <div id="loading-bar"></div>
+        </div>
+        <div id="loading-text">Initializing world...</div>
+    </div>
+    
+    <div id="game-container"></div>
+    
+    <div id="countdown-container">
+        <div id="countdown-label">ASCENSION COUNTDOWN</div>
+        <div id="countdown-timer">10:00:00:00</div>
+    </div>
+    
+    <div id="quest-notification">
+        <div id="quest-title">New Quest Discovered</div>
+        <div id="quest-description">Explore the central plaza and find the Ascension Monument.</div>
+    </div>
+    
+    <div id="controls-info">
+        <p>WASD - Move | SPACE - Jump | E - Interact | M - Toggle Map</p>
+    </div>
+
+    <!-- Replace your current script loading section with this -->
+<!-- Import libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r132/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+
+<!-- Import game files in the correct order -->
+<script src="utils.js"></script>
+<script src="assets.js"></script>
+<script src="ui.js"></script>
+<script src="player.js"></script>
+<script src="npcs.js"></script>
+<script src="minigames.js"></script>
+<script src="quests.js"></script>
+<script src="world.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
